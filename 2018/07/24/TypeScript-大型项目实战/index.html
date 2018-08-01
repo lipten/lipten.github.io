@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>TypeScript + 大型项目实战 | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="typescript">
+    <meta name="description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+<meta name="keywords" content="typescript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript + 大型项目实战">
+<meta property="og:url" content="http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-08-01T06:17:41.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript + 大型项目实战">
+<meta name="twitter:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">TypeScript + 大型项目实战</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">TypeScript + 大型项目实战</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-24T06:06:28.000Z" itemprop="datePublished" class="page-time">
+  2018-07-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TypeScript-大型项目实战"><span class="post-toc-number">1.</span> <span class="post-toc-text">TypeScript + 大型项目实战</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、关于选型"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">一、关于选型</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-TypeScript-大型项目实战"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">TypeScript + 大型项目实战</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-24 06:06:28" datetime="2018-07-24T06:06:28.000Z"  itemprop="datePublished">2018-07-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><img src="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" alt=""></p>
+<blockquote>
+<p>转载地址：<a href="https://juejin.im/post/5b54886ce51d45198f5c75d7" target="_blank" rel="noopener">https://juejin.im/post/5b54886ce51d45198f5c75d7</a></p>
+</blockquote>
+<h1 id="TypeScript-大型项目实战"><a href="#TypeScript-大型项目实战" class="headerlink" title="TypeScript + 大型项目实战"></a>TypeScript + 大型项目实战</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><hr>
+<p>TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。</p>
+<p>项目要做的事情大致分为以下几个大模块</p>
+<ul>
+<li>一站式管理平台</li>
+<li>规模化运维能力</li>
+<li>预案平台</li>
+<li>巡检平台</li>
+<li>全链路压测等</li>
+</ul>
+<p>每一个模块要做的事情也很多，由于牵扯到公司业务，具体要做的一些事情这里我就不一一列举了，反正项目整体规模还是很大的。</p>
+<h2 id="一、关于选型"><a href="#一、关于选型" class="headerlink" title="一、关于选型"></a>一、关于选型</h2><p>在做了一些技术调研后，再结合项目之后的开发量级以及维护成本。最终我和同事在技术选型上得出一致结论，最终选型定为 Vue 最新全家桶 + TypeScript。</p>
+<p>那么问题来了，为什么大型项目非得用 TypeScript 呢，ES6、7 不行么？</p>
+<div align="center"><br><img src="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""><br></div>
+
+<p>其实也没说不行，只不过我个人更倾向在一些协作开发的大型项目中使用 TypeScript 。下面我列一些我做完调研后自己的一些看法</p>
+<ol>
+<li>首先，TypeScript 具有类型系统，且是 JavaScript 的超集。 JavaScript 能做的，它能做。JavaScript 不能做的，它也能做。</li>
+<li>其次，TypeScript 已经比较成熟了，市面上相关资料也比较多，大部分的库和框架也读对 TypeScript 做了很好的支持。</li>
+<li>然后，保证优秀的前提下，它还在积极的开发完善之中，不断地会有新的特性加入进来</li>
+<li>JavaScript 是弱类型并且没有命名空间，导致很难模块化，使得其在大型的协作项目中不是很方便</li>
+<li>vscode、ws 等编辑器对 TypeScript 支持很友好</li>
+<li>TypeScript 在组件以及业务的类型校验上支持比较好，比如</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 定义枚举</span><br><span class="line">const enum StateEnum &#123;</span><br><span class="line">  TO_BE_DONE = 0,</span><br><span class="line">  DOING = 1,</span><br><span class="line">  DONE = 2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义 item 接口</span><br><span class="line">interface SrvItem &#123;</span><br><span class="line">  val: string,</span><br><span class="line">  key: string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义服务接口</span><br><span class="line">interface SrvType &#123;</span><br><span class="line">  name: string,</span><br><span class="line">  key: string,</span><br><span class="line">  state?: StateEnum,</span><br><span class="line">  item: Array&lt;SrvItem&gt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 然后定义初始值（如果不按照类型来，报错肯定是避免不了的）</span><br><span class="line">const types: SrvType = &#123;</span><br><span class="line">  name: &apos;&apos;,</span><br><span class="line">  key: &apos;&apos;,</span><br><span class="line">  item: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-08-01T06:17:41.655Z" itemprop="dateUpdated">2018-08-01 06:17:41</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/07/24/TypeScript-大型项目实战/" target="_blank" rel="external">http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/typescript/">typescript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&title=《TypeScript + 大型项目实战》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&title=《TypeScript + 大型项目实战》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript + 大型项目实战》 — lipten主页&url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/21/vue-slidePage-基于slidePage的vue插件版/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue-slidePage 基于slidePage的vue插件版</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&title=《TypeScript + 大型项目实战》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&title=《TypeScript + 大型项目实战》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《TypeScript + 大型项目实战》 — lipten主页&url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aMZLCQAwEQP7/aS6ligJG0srnoIkoA7bbwWoZ6fGIX8+X1/uR1+Pvv/p+/P071asceOHh4eENbv3T6b6f+tMtJmfLr179FR4eHt42L1++kwt/+jQvOfn7HxY8PDy8m/HyI3khybfaeHh4ePfnJdFDjp8XJDw8PLz/5eVxQCEIiDfZeWyxmLXg4eHh1e4h6iLd5/1Kfw8PDw9v3FWfF4necn/sbvHw8PAWeBujA3l7rFeKqnEGHh4e3lleL0rIx6p6QwaTUAMPDw/vGl61ldVrcVV/W30E5c4eHh4e3oCXxw35p9UQIW+DJSEFHh4e3jav1+CfxBC97XVSQvDw8PDuwMuX6WrUm3+/OcSAh4eHt8Cr/qDX8s+LTRKOlLfdeHh4eEd585i1N0g6KTn5JhsPDw9vgzdfoHvttGrsm6/2eHh4eNu8fJtbbeEnS39eEr6fM5opw8PDw1vmzRf3U9FtXh4KhQEPDw/vKG+ylFcX8clmupC14OHh4V3Iyy/fi1+rZakcfODh4eGt8Xqb13kgO4knoiN4eHh4F/LyUyRFojfUNXlMj2otwsPDw4t5Z0OB6gY9L0jViBkPDw/vSt4Elt9WEhxXh65+tMHw8PDwFnh5MyxpdM234PnxHw8FDw8Pb42XLPfJLU7YeZh77B8DHh4e3oCXD1FFJ209lMmAAh4eHt71vEJLKcbkxSYft6qOZ+Hh4eGd5T2Lr3z4aRK/VttpHx8ZHh4e3gKvt+jn5SQZHcgLTC/8xcPDw9vg5Q2t6jd72+75aFdhY42Hh4c34FVHo87GwZNCciBrwcPDw1vm5UFD/umpcQE8PDy8e/LyTfAkF6mGy6PRATw8PLwWrxdG5GdLHl950U8eMR4eHt4Cr/onPx8vqD6+vJBU42M8PDy8Q7w/JY1F8iRxYfUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

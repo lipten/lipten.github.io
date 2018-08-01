@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>slidePage-轻量灵活的全屏滚动插件 | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="github,slidePage">
+    <meta name="description" content="slidePage slidePage现已推出3.0, 吸取了上一版本slidePage v2.1.1 的各种经验，弥补不足，与v2.1.1不同的是移除了对jquery和zepto的依赖，精简到只有一个js文件，优化了接口调用方式，更适合主流的前端框架，另外还有基于vue的插件版本vue-slidePage和基于react的插件版本react-slidePage  Demo: simple ani">
+<meta name="keywords" content="github,slidePage">
+<meta property="og:type" content="article">
+<meta property="og:title" content="slidePage-轻量灵活的全屏滚动插件">
+<meta property="og:url" content="http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="slidePage slidePage现已推出3.0, 吸取了上一版本slidePage v2.1.1 的各种经验，弥补不足，与v2.1.1不同的是移除了对jquery和zepto的依赖，精简到只有一个js文件，优化了接口调用方式，更适合主流的前端框架，另外还有基于vue的插件版本vue-slidePage和基于react的插件版本react-slidePage  Demo: simple ani">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-24T03:30:48.502Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="slidePage-轻量灵活的全屏滚动插件">
+<meta name="twitter:description" content="slidePage slidePage现已推出3.0, 吸取了上一版本slidePage v2.1.1 的各种经验，弥补不足，与v2.1.1不同的是移除了对jquery和zepto的依赖，精简到只有一个js文件，优化了接口调用方式，更适合主流的前端框架，另外还有基于vue的插件版本vue-slidePage和基于react的插件版本react-slidePage  Demo: simple ani">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">slidePage-轻量灵活的全屏滚动插件</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">slidePage-轻量灵活的全屏滚动插件</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-21T10:43:31.000Z" itemprop="datePublished" class="page-time">
+  2018-07-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#slidePage"><span class="post-toc-number">1.</span> <span class="post-toc-text">slidePage</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Demo"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">Demo:</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Featured"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">Featured</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Documentation"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">Documentation:</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Usage"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Usage</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Install-slidePage"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">Install slidePage</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Including-files"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">Including files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Required-HTML-structure"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">Required HTML structure</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Initialization"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">Initialization</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Configuration"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Configuration</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Options"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Options</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Events"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Events</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Using-Animation"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">Using Animation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Include-animate-css"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">Include animate.css</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HTML-structure"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">HTML structure</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手动触发动画"><span class="post-toc-number">1.5.2.1.</span> <span class="post-toc-text">手动触发动画</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Methods"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Methods</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-slideNext"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">slidepage.slideNext()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-slidePrev"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">slidepage.slidePrev()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-slideTo-page"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">slidepage.slideTo(page)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-slideFile-page"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">slidepage.slideFile(page)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-destroy"><span class="post-toc-number">1.6.5.</span> <span class="post-toc-text">slidepage.destroy()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#slidepage-update-newSlidePages"><span class="post-toc-number">1.6.6.</span> <span class="post-toc-text">slidepage.update(newSlidePages)</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-slidePage-轻量灵活的全屏滚动插件"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">slidePage-轻量灵活的全屏滚动插件</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-21 10:43:31" datetime="2018-07-21T10:43:31.000Z"  itemprop="datePublished">2018-07-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="slidePage"><a href="#slidePage" class="headerlink" title="slidePage"></a>slidePage</h1><blockquote>
+<p>slidePage现已推出3.0, 吸取了上一版本<a href="https://github.com/lipten/slidePage/tree/v2" target="_blank" rel="noopener">slidePage v2.1.1</a> 的各种经验，弥补不足，与v2.1.1不同的是移除了对jquery和zepto的依赖，精简到只有一个js文件，优化了接口调用方式，更适合主流的前端框架，另外还有基于vue的插件版本<a href="https://github.com/lipten/vue-slidePage" target="_blank" rel="noopener">vue-slidePage</a>和基于react的插件版本<a href="https://github.com/lipten/react-slidePage" target="_blank" rel="noopener">react-slidePage</a></p>
+</blockquote>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo:"></a>Demo:</h3><ul>
+<li><a href="http://lipten.link/projects/slidePage3/examples/simple.html" target="_blank" rel="noopener">simple</a></li>
+<li><a href="http://lipten.link/projects/slidePage3/examples/animated.html" target="_blank" rel="noopener">animated</a></li>
+<li><a href="http://lipten.link/projects/slidePage3/examples/scroll.html" target="_blank" rel="noopener">scroll</a> </li>
+<li><a href="http://lipten.link/projects/slidePage3/examples/custom.html" target="_blank" rel="noopener">custom</a> </li>
+<li><a href="http://lipten.link/projects/slidePage3/examples/fullFeatured.html" target="_blank" rel="noopener">fullFeatured</a></li>
+</ul>
+<h3 id="Featured"><a href="#Featured" class="headerlink" title="Featured"></a>Featured</h3><p>slidePage3 特别适合主流前端框架开发，无任何依赖库，源代码只有12kb，Gzip压缩后仅有2.4k, 接口符合插件具有的初始化、销毁、重载的方法，适配PC和移动端，具有单屏内容滚动、手动播放动画、动态重绘等特色功能，具体查看完整示例: <a href="http://lipten.link/projects/slidePage3/examples/fullFeatured.html" target="_blank" rel="noopener">fullFeatured</a></p>
+<h3 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation:"></a>Documentation:</h3><ul>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#install-slidepage">Install slidePage</a></li>
+<li><a href="#including-files">Including files</a></li>
+<li><a href="#required-html-structure">Required HTML structure</a></li>
+<li><a href="#initialization">Initialization</a></li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#options">Options</a></li>
+<li><a href="#using-animation">Using Animation</a></li>
+<li><a href="#methods">Methods</a><ul>
+<li><a href="#slidepageslidenext">slidepage.slideNext()</a></li>
+<li><a href="#slidepageslideprev">slidepage.slidePrev()</a></li>
+<li><a href="#slidepageslidetopage">slidepage.slideTo(page)</a></li>
+<li><a href="#slidepageslidefilepage">slidepage.slideFile(page)</a></li>
+<li><a href="#slidepagedestroy">slidepage.destroy()</a></li>
+<li><a href="#slidepageupdate">slidepage.update()</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Install-slidePage"><a href="#Install-slidePage" class="headerlink" title="Install slidePage"></a>Install slidePage</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// With npm</span><br><span class="line">npm install slidePage</span><br><span class="line"></span><br><span class="line">// With bower</span><br><span class="line">bower install slidePage</span><br></pre></td></tr></table></figure>
+<h3 id="Including-files"><a href="#Including-files" class="headerlink" title="Including files"></a>Including files</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;slidePage.css&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=&quot;text/javascript&quot; src=&quot;slidePage.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Required-HTML-structure"><a href="#Required-HTML-structure" class="headerlink" title="Required HTML structure"></a>Required HTML structure</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;slide-container&quot; id=&quot;slide-container&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;slide-page page1&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;h2&gt;page1&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;page1 content&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;slide-page page2&quot;&gt;</span><br><span class="line">      &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">        &lt;h2&gt;page2&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;page2 content&lt;/p&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>您可以查看完整examples里的html文件结构 <a href="https://github.com/lipten/slidePage/blob/master/examples/fullFeatured.html" target="_blank" rel="noopener">fullFeatured.html</a></p>
+<h3 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new slidePage()</span><br></pre></td></tr></table></figure>
+<h2 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var slidepage = new slidePage(&#123;</span><br><span class="line">    slideContainer: &apos;#slide-container&apos;,</span><br><span class="line">    slidePages: &apos;.slide-item&apos;,</span><br><span class="line">    page: 1,</span><br><span class="line">    refresh: true,</span><br><span class="line">    useWheel: true,</span><br><span class="line">    useSwipe: true,</span><br><span class="line">    useAnimation : true,</span><br><span class="line"></span><br><span class="line">    // Events</span><br><span class="line">    before: function(origin,direction,target)&#123;&#125;,</span><br><span class="line">    after: function(origin,direction,target)&#123;&#125;,</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h2><blockquote>
+<p>在slidePage中，page指的是每一次全屏滚动的一屏，也可以理解为每一屏对应的页码，必须是1以上的整数</p>
+</blockquote>
+<table><br>  <thead><br>  <tr><br>    <th>name</th><br>    <th>type</th><br>    <th>default</th><br>    <th>description</th><br>  </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <td>slideContainer</td><br>      <td>String|Element</td><br>      <td>‘.slide-container’</td><br>      <td>指定slidePage要运行的容器选择器或元素</td><br>    </tr><br>    <tr><br>      <td>slidePages</td><br>      <td>String|NodeList|HTMLCollection</td><br>      <td>‘.slide-page’</td><br>      <td>指定<code>slideContainer</code>容器里每个page的选择器或元素</td><br>    </tr><br>    <tr><br>      <td>page</td><br>      <td>Number</td><br>      <td>1</td><br>      <td>首次进入的page页码</td><br>    </tr><br>    <tr><br>      <td>useAnimation</td><br>      <td>Boolean</td><br>      <td>true</td><br>      <td>是否开启动画</td><br>    </tr><br>    <tr><br>      <td>refresh</td><br>      <td>Boolean</td><br>      <td>true</td><br>      <td>每次滚动进入是否重新执行动画</td><br>    </tr><br>    <tr><br>      <td>useWheel</td><br>      <td>Boolean</td><br>      <td>true</td><br>      <td>是否开启鼠标滚轮滑动</td><br>    </tr><br>    <tr><br>      <td>useSwipe</td><br>      <td>Boolean</td><br>      <td>true</td><br>      <td>是否开启移动端触控滑动</td><br>    </tr><br>  </tbody><br></table>
+
+<h2 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h2><table><br>  <thead><br>  <tr><br>    <th>name</th><br>    <th>description</th><br>  </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <td>before</td><br>      <td>每次全屏滚动前触发事件，回调三个参数(origin, direction, target)，分别是滚动前的page序号、方向(‘next’|’prev’)、滚动后的page序号</td><br>    </tr><br>    <tr><br>      <td>after</td><br>      <td>每次全屏滚动后触发事件，回调三个参数(origin, direction, target)，参数释义同上</td><br>    </tr><br>  </tbody><br></table>
+
+<h2 id="Using-Animation"><a href="#Using-Animation" class="headerlink" title="Using Animation"></a>Using Animation</h2><blockquote>
+<p>为了方便示例用animate.css，动画效果可以自己实现</p>
+</blockquote>
+<h3 id="Include-animate-css"><a href="#Include-animate-css" class="headerlink" title="Include animate.css"></a>Include animate.css</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="HTML-structure"><a href="#HTML-structure" class="headerlink" title="HTML structure"></a>HTML structure</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;step animated fadeIn&quot; data-delay=&quot;1300&quot;&gt;&lt;/div&gt;;</span><br></pre></td></tr></table></figure>
+<p>在想要动画控制的元素上加上step类，并加上css动画类名即可使用动画，data-delay属性控制动画延时播放(默认为100毫秒);</p>
+<h4 id="手动触发动画"><a href="#手动触发动画" class="headerlink" title="手动触发动画"></a>手动触发动画</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;lazy animated fadeIn&quot;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在想要手动播放动画的元素上加上lazy类，并加上css动画类名即可使用动画，可以加上data-delay使触发时再延时播放;</li>
+<li>通过slidepage.slideFire(page)指定某一页的lazy动画触发播放。</li>
+</ol>
+<h2 id="Methods"><a href="#Methods" class="headerlink" title="Methods"></a>Methods</h2><h3 id="slidepage-slideNext"><a href="#slidepage-slideNext" class="headerlink" title="slidepage.slideNext()"></a>slidepage.slideNext()</h3><p>滑动定位到下一屏</p>
+<h3 id="slidepage-slidePrev"><a href="#slidepage-slidePrev" class="headerlink" title="slidepage.slidePrev()"></a>slidepage.slidePrev()</h3><p>滑动定位到上一屏</p>
+<h3 id="slidepage-slideTo-page"><a href="#slidepage-slideTo-page" class="headerlink" title="slidepage.slideTo(page)"></a>slidepage.slideTo(page)</h3><p>传入page页码，滑动定位到对应的page</p>
+<h3 id="slidepage-slideFile-page"><a href="#slidepage-slideFile-page" class="headerlink" title="slidepage.slideFile(page)"></a>slidepage.slideFile(page)</h3><p>触发对应 page 的lazy手动动画</p>
+<h3 id="slidepage-destroy"><a href="#slidepage-destroy" class="headerlink" title="slidepage.destroy()"></a>slidepage.destroy()</h3><p>销毁当前实例，移除所有事件恢复class属性值。</p>
+<h3 id="slidepage-update-newSlidePages"><a href="#slidepage-update-newSlidePages" class="headerlink" title="slidepage.update(newSlidePages)"></a>slidepage.update(newSlidePages)</h3><p>当html里的page发生变化时需要执行动态更新。</p>
+<p><code>newSlidePages</code>参数非必填，仅应对于初始化的时候<code>slidePages</code>参数传入的是<code>NodeList</code>或<code>HTMLCollection</code>时才需要在更新的时候再传一次变化后的DOM结构通知更新。</p>
+<p>&gt; 此方法非常适合现在流行的数据驱动型框架，当模型数据驱动改变pege的排列时，执行update可以起到更新的作用，可以先看示例源码了解：<a href="https://github.com/lipten/slidePage/blob/master/examples/custom.html" target="_blank" rel="noopener">custom.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-24T03:30:48.502Z" itemprop="dateUpdated">2018-07-24 03:30:48</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/07/21/slidePage-轻量灵活的全屏滚动插件/" target="_blank" rel="external">http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/slidePage/">slidePage</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&title=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&title=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/21/Tiny-editor-可实时运行的代码编辑器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Tiny-editor-可实时运行的代码编辑器</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&title=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&title=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《slidePage-轻量灵活的全屏滚动插件》 — lipten主页&url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/07/21/slidePage-轻量灵活的全屏滚动插件/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQW7DMAwEwPz/0+21QGtnV6KSFBifCkexNSogMqQej/j6+nH9vnN1/+rO/f375zxOXHh4eHgbU7+f9Bosecvs0/Dw8PBew7vaUfPAcL/1r41vgwQeHh7eZ/KS1HYnpU5G4uHh4f0XXvKtqTFvCAx4eHh4JW+/NJCXcfPEOg9UA7UWPDw8vJiXd5E+5+8j/T08PDy87a56W3hNyrtTDbZonnh4eHgHeO2mfJ+2JkltW1DYP7KAh4eHd4KXtJ3aw087pGSx6rQbDw8Pb4g3UAAtw8bOguZtMDw8PLzX85KCwlojKkmI89LDk4XDw8PDO8Brw0OeOu8HofZpT34r4OHh4Q3x1rb4PFSsZbntW/Dw8PDexUvKrC2jDSptah6VcfHw8PAO8NrteO1lbXE2n8nlouDh4eEd5u1v9GthIx9Tl0Lw8PDwDvAWN9y48Jpv63li3c4BDw8P7zQvCQOzxdzkfj6retXx8PDwlnj7x6faCSULPftePDw8vHO89iDU2vGC/U0/L/7i4eHhzfKSSbTHC/Jsdu27xfLh4eHhHeDlV/6C/EBAfg0UI/Dw8PBGeTvtqDw8JOWGvDRcUPHw8PBewmuT42Raa7z9pBwPDw9vlpcM3W9utel1Tor+b3h4eHijvDYwTBUyksAwNgc8PDy8UV4C20+v157fhp8/PsXDw8M7wMuDQX2GKz4EMNW7u/wZgIeHhzfKW2vht9Pdef5Wwo2Hh4f3plJF0tTfaW6tJffDBRQ8PDy8krfWjoqaT2UDLGcUYQMPDw/vGC+vXqyVHtai036ZAw8PD++9vLxkkAeA9ohqDsbDw8P7BF4y6bbk2ra46iMIeHh4eMd47SZ+PyZfuLVCcF5QxsPDwzvBWysKtO2otpyRL8dYfw8PDw/vOe8blnQr8Gpjm/4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
