@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>时隔两年，更新了一下下以前的教程网站。 | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="分享创造">
+    <meta name="description" content="写在前面以前脑袋一热做的教程网站 https://www.v2ex.com/t/275010#reply63 更新内容： 这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板; 再把之前的教程网站放进来，加个编辑器的入口。 之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。 体验编辑器可以">
+<meta name="keywords" content="分享创造">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时隔两年，更新了一下下以前的教程网站。">
+<meta property="og:url" content="http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="写在前面以前脑袋一热做的教程网站 https://www.v2ex.com/t/275010#reply63 更新内容： 这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板; 再把之前的教程网站放进来，加个编辑器的入口。 之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。 体验编辑器可以">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-27T07:51:38.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时隔两年，更新了一下下以前的教程网站。">
+<meta name="twitter:description" content="写在前面以前脑袋一热做的教程网站 https://www.v2ex.com/t/275010#reply63 更新内容： 这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板; 再把之前的教程网站放进来，加个编辑器的入口。 之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。 体验编辑器可以">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">时隔两年，更新了一下下以前的教程网站。</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">时隔两年，更新了一下下以前的教程网站。</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-27T07:49:50.000Z" itemprop="datePublished" class="page-time">
+  2018-08-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新内容："><span class="post-toc-number">2.</span> <span class="post-toc-text">更新内容：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有话想说"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">有话想说</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-时隔两年，更新了一下下以前的教程网站。"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">时隔两年，更新了一下下以前的教程网站。</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-27 07:49:50" datetime="2018-08-27T07:49:50.000Z"  itemprop="datePublished">2018-08-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>以前脑袋一热做的教程网站 <a href="https://www.v2ex.com/t/275010#reply63" target="_blank" rel="noopener">https://www.v2ex.com/t/275010#reply63</a></p>
+<h2 id="更新内容："><a href="#更新内容：" class="headerlink" title="更新内容："></a>更新内容：</h2><ul>
+<li>这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板;</li>
+<li>再把之前的教程网站放进来，加个编辑器的入口。</li>
+<li>之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。</li>
+<li>体验编辑器可以进入 <a href="http://www.codeasily.net/editor" target="_blank" rel="noopener">http://www.codeasily.net/editor</a></li>
+</ul>
+<h3 id="有话想说"><a href="#有话想说" class="headerlink" title="有话想说"></a>有话想说</h3><p>回顾两年前的那篇帖子，以前那个时候学习前端的教程资源和对前端的认知比较守旧👨‍🌾‍，所以自己写教程👨‍💻‍，当时还有很多评论说做的挺好希望出多点教程，可惜毕业后一直忙于工作而且写教程消耗大量时间精力，就一直搁着了，非常感谢当时鼓励我的小伙伴👏。</p>
+<p>现在翻看慕课网的一些课程，确实与时俱进多了一些前端真正该学的东西并且能提高行业竞争力的教程📚，出来工作 2 年认识的前端开发人员的整体姿势水平都提高了📈，也包括我自己😌。</p>
+<p>这次做的这个编辑器只是为了完善两年前写的丑丑的 demo，改善一下界面和体验，还有今年写了个 web 端的 console 组件，用来填补这个编辑器的一个功能，也当做学习了。</p>
+<p>我做这个编辑器不为发展成主业或者明星产品，市面上功能更强大的编辑器有很多，只是我喜欢动手体验学习，即使是轮子，只要能给我带来提升，都值得一试☝️</p>
+<p>我是一个喜欢实践代替看教程的人，即使做的不怎么样，自己心里觉得满足就够了👌</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-08-27T07:51:38.702Z" itemprop="dateUpdated">2018-08-27 07:51:38</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" target="_blank" rel="external">http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/分享创造/">分享创造</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&title=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&title=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/24/TypeScript-大型项目实战/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">TypeScript + 大型项目实战</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&title=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&title=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《时隔两年，更新了一下下以前的教程网站。》 — lipten主页&url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLklEQVR42u3aS24bMRAFQN//0gqQlReJ5r1uCdBQxZUgj4csetHuz89PvB5/1+/Pv79Jvn/+zP+eT97z/G2rhY2NjX0T9uPper5Njn++Y3vC/+2VWLCxsbFPZScBIw82bUhLrqx928U5sbGxsb+SnWycw/Kg2IY0bGxsbOycnaQiefLwjvNgY2Njfw+7DSpJwtAmFbMi1NtradjY2Ngfz541ej/z89v729jY2Ngfxn6s1/uuZtY2iM6MjY2NfRB71gZoB2VmvHZsqC5UYWNjYx/BbgPDLCVoh2z2AexiF2xsbOzj2PlR2hL/fign2bFu92JjY2Mfyt6M4MwC1ebo7aUUERUbGxv75uy80dsmDG3a0A795MUpbGxs7FPZSTOghSUtgXb3WWshysCwsbGxb87el/WTgLdpGLysUIWNjY19ELsdxMnLOvnb2pVf6MWO2NjY2IeyZ2M0UVF+UbTaNA+wsbGxz2bnhZi8fNMWldod2+AaRWxsbGzsm7PbQk+eTrTlofYMyXmwsbGxz2bPJljyFm+Lz5sQeWHroj2AjY2NfXP2LHjkpP3z7W9FA0bY2NjYx7FfVWaaNY836cosdcHGxsY+mz0bhcnLOm2RKHlzPk6EjY2NfSr7VW3XpNiUN2tnAS/CY2NjYx/E3gSbZBXpQXlN+/QJGxsb+wz2rHHblvJnjeG2JVAEM2xsbOxD2a/apn1z/oY2BYoCGDY2NvYR7CSR2CcYs4J+C4s+Y2NjYx/Efh4q8g3yMlDy01nDuC1vYWNjY5/Brssx8TXl4W3Wyn3ZpBI2Njb2zdl5cb/9R392oM0Y0OxCsbGxse/OTv71j25rvd5RtMLGxsb+BnZejp9dwWsTj81VXkRsbGxs7NuyH+XapCJ5OyEPckkr+iJoYWNjY9+c3QaDfIgnudZNCjFLVLCxsbFPZedBqx2USS5l1oRI/gwXwQ8bGxv7OHYbtNq27uwKkrO1hS1sbGxs7LwAlASn/JlNuvKPb7CxsbG/kp2TklCXpxBtkyBKUbCxsbGPY7fJRhucZvX5WaM3uixsbGzsg9ib0swsedikFptLWfW3sbGxsT+R/Qf7qpa6k8eWPAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

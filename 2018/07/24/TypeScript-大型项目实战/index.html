@@ -26,20 +26,20 @@
     
     
     <meta name="keywords" content="typescript">
-    <meta name="description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+    <meta name="description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出">
 <meta name="keywords" content="typescript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TypeScript + 大型项目实战">
 <meta property="og:url" content="http://lipten.github.io/2018/07/24/TypeScript-大型项目实战/index.html">
 <meta property="og:site_name" content="lipten主页">
-<meta property="og:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+<meta property="og:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
-<meta property="og:updated_time" content="2018-08-01T06:17:41.655Z">
+<meta property="og:updated_time" content="2018-08-03T11:01:12.664Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TypeScript + 大型项目实战">
-<meta name="twitter:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出来很久了，很多大公司很多大项目也都在使用它进行开发。上个月，我这边也正式跟进一个对集团的大型运维类项目。 项目要做的事情大致分为以下几个大模块  一站式管理平台 规模化运维能力 预案平台 巡检平台 全链路压测等">
+<meta name="twitter:description" content="转载地址：https://juejin.im/post/5b54886ce51d45198f5c75d7  TypeScript + 大型项目实战写在前面 TypeScript 已经出">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1">
     
         <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
@@ -194,7 +194,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p><img src="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" alt=""></p>
+            <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://user-gold-cdn.xitu.io/2018/7/22/164c26af17fabb35?imageView2/1/w/1304/h/734/q/85/format/webp/interlace/1" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <blockquote>
 <p>转载地址：<a href="https://juejin.im/post/5b54886ce51d45198f5c75d7" target="_blank" rel="noopener">https://juejin.im/post/5b54886ce51d45198f5c75d7</a></p>
 </blockquote>
@@ -211,7 +217,13 @@
 <p>每一个模块要做的事情也很多，由于牵扯到公司业务，具体要做的一些事情这里我就不一一列举了，反正项目整体规模还是很大的。</p>
 <h2 id="一、关于选型"><a href="#一、关于选型" class="headerlink" title="一、关于选型"></a>一、关于选型</h2><p>在做了一些技术调研后，再结合项目之后的开发量级以及维护成本。最终我和同事在技术选型上得出一致结论，最终选型定为 Vue 最新全家桶 + TypeScript。</p>
 <p>那么问题来了，为什么大型项目非得用 TypeScript 呢，ES6、7 不行么？</p>
-<div align="center"><br><img src="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""><br></div>
+<div align="center"><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://user-gold-cdn.xitu.io/2018/7/22/164c239019ab71a9?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br></div>
 
 <p>其实也没说不行，只不过我个人更倾向在一些协作开发的大型项目中使用 TypeScript 。下面我列一些我做完调研后自己的一些看法</p>
 <ol>
@@ -230,7 +242,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-08-01T06:17:41.655Z" itemprop="dateUpdated">2018-08-01 06:17:41</time>
+    最后更新时间：<time datetime="2018-08-03T11:01:12.664Z" itemprop="dateUpdated">2018-08-03 11:01:12</time>
 </span><br>
 
 
@@ -311,7 +323,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">时隔两年，更新了一下下以前的教程网站。</h4>
+      </a>
+    </div>
   
 
   
