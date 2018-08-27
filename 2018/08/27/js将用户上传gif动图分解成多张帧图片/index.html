@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>js将用户上传gif动图分解成多张帧图片 | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="javascript">
+    <meta name="description" content="js将用户上传gif动图分解成多张帧图片写在前面工作中遇到一个这么一个需求：这是一个多图上传的场景，如果用户上传选择多张图片，则上传后直接展示多张图片，如果上传的图片是gif动图，则需要分解这张动图拆分成一帧一帧的单张图片，再按顺序展示出来。 实现思路这里主要针对gif分解多图的实现 首先对用户上传的文件格式进行判断； 将gif动图经过(gif库)[https://github.com/buzzf">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js将用户上传gif动图分解成多张帧图片">
+<meta property="og:url" content="http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="js将用户上传gif动图分解成多张帧图片写在前面工作中遇到一个这么一个需求：这是一个多图上传的场景，如果用户上传选择多张图片，则上传后直接展示多张图片，如果上传的图片是gif动图，则需要分解这张动图拆分成一帧一帧的单张图片，再按顺序展示出来。 实现思路这里主要针对gif分解多图的实现 首先对用户上传的文件格式进行判断； 将gif动图经过(gif库)[https://github.com/buzzf">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-27T09:04:32.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js将用户上传gif动图分解成多张帧图片">
+<meta name="twitter:description" content="js将用户上传gif动图分解成多张帧图片写在前面工作中遇到一个这么一个需求：这是一个多图上传的场景，如果用户上传选择多张图片，则上传后直接展示多张图片，如果上传的图片是gif动图，则需要分解这张动图拆分成一帧一帧的单张图片，再按顺序展示出来。 实现思路这里主要针对gif分解多图的实现 首先对用户上传的文件格式进行判断； 将gif动图经过(gif库)[https://github.com/buzzf">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">js将用户上传gif动图分解成多张帧图片</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">js将用户上传gif动图分解成多张帧图片</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-27T08:19:54.000Z" itemprop="datePublished" class="page-time">
+  2018-08-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#js将用户上传gif动图分解成多张帧图片"><span class="post-toc-number">1.</span> <span class="post-toc-text">js将用户上传gif动图分解成多张帧图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在前面"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">写在前面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现思路"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">实现思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#这里主要针对gif分解多图的实现"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">这里主要针对gif分解多图的实现</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码部分"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">代码部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#0-引入gif库"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">0. 引入gif库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-对用户上传的文件格式进行判断"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">1. 对用户上传的文件格式进行判断</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-分解gif图片"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">2. 分解gif图片</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-js将用户上传gif动图分解成多张帧图片"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">js将用户上传gif动图分解成多张帧图片</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-27 08:19:54" datetime="2018-08-27T08:19:54.000Z"  itemprop="datePublished">2018-08-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="js将用户上传gif动图分解成多张帧图片"><a href="#js将用户上传gif动图分解成多张帧图片" class="headerlink" title="js将用户上传gif动图分解成多张帧图片"></a>js将用户上传gif动图分解成多张帧图片</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>工作中遇到一个这么一个需求：这是一个多图上传的场景，如果用户上传选择多张图片，则上传后直接展示多张图片，如果上传的图片是gif动图，则需要分解这张动图拆分成一帧一帧的单张图片，再按顺序展示出来。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><h3 id="这里主要针对gif分解多图的实现"><a href="#这里主要针对gif分解多图的实现" class="headerlink" title="这里主要针对gif分解多图的实现"></a>这里主要针对gif分解多图的实现</h3><ol>
+<li>首先对用户上传的文件格式进行判断；</li>
+<li>将gif动图经过(gif库)[<a href="https://github.com/buzzfeed/libgif-js/blob/master/libgif.js]解析成gif实例" target="_blank" rel="noopener">https://github.com/buzzfeed/libgif-js/blob/master/libgif.js]解析成gif实例</a></li>
+<li>遍历获取gif实例的每一帧的canvas，转换成baseURL，再转一份file对象存放起来。</li>
+<li>通过转换后的baseURL展示到界面，用户点上传就把对应的file对象上传服务器。</li>
+</ol>
+<p>这里最核心的就是2，3步，非常庆幸有<a href="https://github.com/buzzfeed/libgif-js" target="_blank" rel="noopener">https://github.com/buzzfeed/libgif-js</a> 这个库，才得以实现后面的步骤；</p>
+<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><p>由于是公司项目就不展示界面和完整代码，只放关键代码：</p>
+<h3 id="0-引入gif库"><a href="#0-引入gif库" class="headerlink" title="0. 引入gif库"></a>0. 引入gif库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; SuperGif &#125; from  &apos;./libgif.js&apos;</span><br></pre></td></tr></table></figure>
+<h3 id="1-对用户上传的文件格式进行判断"><a href="#1-对用户上传的文件格式进行判断" class="headerlink" title="1. 对用户上传的文件格式进行判断"></a>1. 对用户上传的文件格式进行判断</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断文件格式并展示的函数</span></span><br><span class="line">pre_upload() &#123;</span><br><span class="line">    <span class="comment">// 点击上传按钮触发弹出文件选择框</span></span><br><span class="line">    <span class="keyword">const</span> input = <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);</span><br><span class="line">    input.setAttribute(<span class="string">'type'</span>, <span class="string">'file'</span>);</span><br><span class="line">    <span class="comment">// 注意要设置多选属性</span></span><br><span class="line">    input.setAttribute(<span class="string">'multiple'</span>, <span class="string">'true'</span>);</span><br><span class="line">    input.addEventListener(<span class="string">'change'</span>, (e) =&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.img_list = [];</span><br><span class="line">        <span class="keyword">this</span>.can_upload = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">this</span>.qiniu_url_list = [];</span><br><span class="line">        <span class="comment">// 判断是gif格式则交给this.pre_load_gif函数处理</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="regexp">/(image\/gif)/</span>.test(e.path[<span class="number">0</span>].files[<span class="number">0</span>].type)) &#123;</span><br><span class="line">            <span class="keyword">this</span>.pre_load_gif(e.path[<span class="number">0</span>].files[<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果是上传多张静态的png、jpg图片则直接转换成baseURL</span></span><br><span class="line">        <span class="keyword">var</span> img_list = [];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,item; item = e.path[<span class="number">0</span>].files[i]; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!<span class="regexp">/(image\/png)|(image\/jp(e?)g)/</span>.test(item.type)) &#123;</span><br><span class="line">                alert(<span class="string">'请上传jpg、png格式的图片'</span>)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            img_list.push(&#123;</span><br><span class="line">                file_name: item.name,</span><br><span class="line">                url: URL.createObjectURL(item),</span><br><span class="line">                file: item,</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.img_list = img_list</span><br><span class="line">    &#125;);</span><br><span class="line">    input.click();</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="2-分解gif图片"><a href="#2-分解gif图片" class="headerlink" title="2. 分解gif图片"></a>2. 分解gif图片</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">dataURLtoFile(dataurl, filename) &#123;</span><br><span class="line">    <span class="keyword">const</span> arr = dataurl.split(<span class="string">','</span>);</span><br><span class="line">    <span class="keyword">const</span> mime = arr[<span class="number">0</span>].match(<span class="regexp">/:(.*?);/</span>)[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">const</span> bstr = atob(arr[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">var</span> n = bstr.length;</span><br><span class="line">    <span class="keyword">const</span> u8arr = <span class="keyword">new</span> <span class="built_in">Uint8Array</span>(n);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        u8arr[n] = bstr.charCodeAt(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> File([u8arr], filename, &#123;<span class="attr">type</span>:mime&#125;);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 将canvas转换成file对象</span></span><br><span class="line">convertCanvasToImage(canvas, filename) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dataURLtoFile(canvas.toDataURL(<span class="string">'image/png'</span>), filename);</span><br><span class="line">&#125;,</span><br><span class="line">pre_load_gif(gif_source) &#123;</span><br><span class="line">    <span class="keyword">var</span> img_list = [];</span><br><span class="line">    <span class="keyword">const</span> gifImg = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">    <span class="comment">// gif库需要img标签配置下面两个属性</span></span><br><span class="line">    gifImg.setAttribute(<span class="string">'rel:animated_src'</span>, URL.createObjectURL(gif_source))</span><br><span class="line">    gifImg.setAttribute(<span class="string">'rel:auto_play'</span>, <span class="string">'0'</span>)</span><br><span class="line">    <span class="comment">// 新建gif实例</span></span><br><span class="line">    <span class="keyword">var</span> rub = <span class="keyword">new</span> SuperGif(&#123; <span class="attr">gif</span>: gifImg &#125; );</span><br><span class="line">    rub.load(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> img_list = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">1</span>; i &lt;= rub.get_length(); i++) &#123;</span><br><span class="line">            <span class="comment">// 遍历gif实例的每一帧</span></span><br><span class="line">            rub.move_to(i);</span><br><span class="line">            <span class="comment">// 将每一帧的canvas转换成file对象</span></span><br><span class="line">            <span class="keyword">let</span> cur_file = <span class="keyword">this</span>.convertCanvasToImage(rub.get_canvas(), gif_source.name.replace(<span class="string">'.gif'</span>, <span class="string">''</span>) + <span class="string">`-<span class="subst">$&#123;i&#125;</span>`</span>)</span><br><span class="line">            img_list.push(&#123;</span><br><span class="line">                file_name: cur_file.name,</span><br><span class="line">                url: URL.createObjectURL(cur_file),</span><br><span class="line">                file: cur_file,</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.img_list = img_list</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>至此，核心功能基本实现，上面的函数已经将gif分解成多张图片存放在this.img_list 这个数组里面。</p>
+<p>接下来只要拿img_list数组里的file对象上传到服务器即可。</p>
+<p>上传方式各不相同，这里就不放具体代码了，需要注意的是，图片上传是异步操作，多图上传需要得知所有的图片全部上传成功才能确定上传完成，所以如果上传的函数返回的是promise对象，则可以直接用<code>Promise.all</code>函数即可得知所有图片上传完毕的回调。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-08-27T09:04:32.188Z" itemprop="dateUpdated">2018-08-27 09:04:32</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/08/27/js将用户上传gif动图分解成多张帧图片/" target="_blank" rel="external">http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&title=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&title=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/27/时隔两年，更新了一下下以前的教程网站。/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">时隔两年，更新了一下下以前的教程网站。</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&title=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&title=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《js将用户上传gif动图分解成多张帧图片》 — lipten主页&url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/08/27/js将用户上传gif动图分解成多张帧图片/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJ0lEQVR42u3awW7CQAwEUP7/p+m1EiLMrJOKbF9OCKUhb3uwPPbjEV/Pl+v1+9/fvPt8/E3+u6/3PK64sLGxsW/Cfh5ex4A57Ph9EuTxu719GjY2NvZ27OMfmJSZ5Jjyo0zKZFTksLGxsf8x+xiWPCe52sKJjY2NjZ2/blJa2rDpuDQmrQs2NjY29rwlaEtgHjatDSFOy9KwsbGxv56d//D3f75kvo2NjY39xexneV0xHsjLW/78DwpsbGzsjdjzlZ0rRsJ/M6jAxsbG3o99/KD6oeWT87ApH/0e/3uwsbGxd2Wfm8nMV22SA2pHGtjY2Ng7sdu2IS9Ra0d51mrOhzuxsbGxN2LPB73zwXB7rMnQImpFsLGxsbdgt4+4YgDQtijtGCOah2BjY2Nvx06CoXy5Zy0SWqvAUcHDxsbG3oidtwptczIZCa+NkPNGBRsbG3sn9rkrNW2ZacOmpMTWk21sbGzsm7Mn4f4kvl8rkJNSio2Njb0ruw2Dzhro5utB7QA4WgbCxsbG3o6dv0TborRx/ySoKsIpbGxs7I3YbRGaDF+vAK89BxsbG3sndr5Mc24YlBfItuVIlo2wsbGx92PPlxrXov92hNAex9t7sLGxsTdi10HM0nLPPFqaHFA9JMDGxsa+IXstZG/jpGS9Jm9g2pEzNjY29n9gr/3YWllaK1eTUCnaWsLGxsa+IXutJORtySS0ykvs8cEV/2FsbGzs27LXfiBvYM5tP9pForrTwsbGxr4hu/iD8spXKvNAv10V/TDfxsbGxr45Ow+D2uinjY2SOyel60Mfho2NjX1zdhsGrbEn8+fkCNoCiY2Njb0Tu12OnKz1tAOJtkGql3WwsbGxN2JPXmhShCYjgTbeikIlbGxs7Fuxn+W1tiKTj4cnRSs/emxsbOyd2JO6NwmMkmKZPD8f8WJjY2Pvzc6L1loQP288LhlCYGNjY2/HnjQJa3fOxwyPyYWNjY2NXUY8k+Fx3rocP/PkAoaNjY29EXteliYHN5pvY2NjY2/EzkOlSSSUfz5rueftMWFjY2NvxJ4kMC01D/2vaIoW59vY2NjY38v+AWTAfLgI/ARhAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
