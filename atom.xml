@@ -44,15 +44,15 @@
     <link href="http://lipten.github.io/2018/08/27/%E6%97%B6%E9%9A%94%E4%B8%A4%E5%B9%B4%EF%BC%8C%E6%9B%B4%E6%96%B0%E4%BA%86%E4%B8%80%E4%B8%8B%E4%B8%8B%E4%BB%A5%E5%89%8D%E7%9A%84%E6%95%99%E7%A8%8B%E7%BD%91%E7%AB%99%E3%80%82/"/>
     <id>http://lipten.github.io/2018/08/27/时隔两年，更新了一下下以前的教程网站。/</id>
     <published>2018-08-27T07:49:50.000Z</published>
-    <updated>2018-08-27T07:51:38.702Z</updated>
+    <updated>2018-08-28T06:00:09.338Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>以前脑袋一热做的教程网站 <a href="https://www.v2ex.com/t/275010#reply63" target="_blank" rel="noopener">https://www.v2ex.com/t/275010#reply63</a></p><h2 id="更新内容："><a href="#更新内容：" class="headerlink" title="更新内容："></a>更新内容：</h2><ul><li>这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板;</li><li>再把之前的教程网站放进来，加个编辑器的入口。</li><li>之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。</li><li>体验编辑器可以进入 <a href="http://www.codeasily.net/editor" target="_blank" rel="noopener">http://www.codeasily.net/editor</a></li></ul><h3 id="有话想说"><a href="#有话想说" class="headerlink" title="有话想说"></a>有话想说</h3><p>回顾两年前的那篇帖子，以前那个时候学习前端的教程资源和对前端的认知比较守旧👨‍🌾‍，所以自己写教程👨‍💻‍，当时还有很多评论说做的挺好希望出多点教程，可惜毕业后一直忙于工作而且写教程消耗大量时间精力，就一直搁着了，非常感谢当时鼓励我的小伙伴👏。</p><p>现在翻看慕课网的一些课程，确实与时俱进多了一些前端真正该学的东西并且能提高行业竞争力的教程📚，出来工作 2 年认识的前端开发人员的整体姿势水平都提高了📈，也包括我自己😌。</p><p>这次做的这个编辑器只是为了完善两年前写的丑丑的 demo，改善一下界面和体验，还有今年写了个 web 端的 console 组件，用来填补这个编辑器的一个功能，也当做学习了。</p><p>我做这个编辑器不为发展成主业或者明星产品，市面上功能更强大的编辑器有很多，只是我喜欢动手体验学习，即使是轮子，只要能给我带来提升，都值得一试☝️</p><p>我是一个喜欢实践代替看教程的人，即使做的不怎么样，自己心里觉得满足就够了👌</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>事情的缘由：<a href="https://www.v2ex.com/t/275010#reply63" target="_blank" rel="noopener">https://www.v2ex.com/t/275010#reply63</a><br>以前脑袋一热写了个教程网站：<a href="http://codeasily.net" target="_blank" rel="noopener">http://codeasily.net</a></p><h2 id="更新内容："><a href="#更新内容：" class="headerlink" title="更新内容："></a>更新内容：</h2><ul><li>这次用 vue 框架结合Tiny-editor做个简单的编辑器，仿造 jsbin，还自己实现了 console 面板;</li><li>再把之前的教程网站放进来，加个编辑器的入口。</li><li>之前的多说评论插件挂了，貌似现在国内的免费评论插件基本挂了，换成了来必力的评论插件，需要翻墙额。</li><li>体验编辑器可以进入 <a href="http://www.codeasily.net/editor" target="_blank" rel="noopener">http://www.codeasily.net/editor</a></li></ul><h3 id="有话想说"><a href="#有话想说" class="headerlink" title="有话想说"></a>有话想说</h3><p>回顾两年前的那篇帖子，以前那个时候学习前端的教程资源和对前端的认知比较守旧👨‍🌾‍，所以自己写教程👨‍💻‍，当时还有很多评论说做的挺好希望出多点教程，可惜毕业后一直忙于工作而且写教程消耗大量时间精力，就一直搁着了，非常感谢当时鼓励我的小伙伴👏。</p><p>现在翻看慕课网的一些课程，确实与时俱进多了一些前端真正该学的东西并且能提高行业竞争力的教程📚，出来工作 2 年认识的前端开发人员的整体姿势水平都提高了📈，也包括我自己😌。</p><p>这次做的这个编辑器只是为了完善两年前写的丑丑的 demo，改善一下界面和体验，还有今年写了个 web 端的 console 组件，用来填补这个编辑器的一个功能，也当做学习了。</p><p>我做这个编辑器不为发展成主业或者明星产品，市面上功能更强大的编辑器有很多，只是我喜欢动手体验学习，即使是轮子，只要能给我带来提升，都值得一试☝️</p><p>我是一个喜欢实践代替看教程的人，即使做的不怎么样，自己心里觉得满足就够了👌</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;以前脑袋一热做的教程网站 &lt;a href=&quot;https://www.v2ex.com/t/275010#reply63&quot; t
+        &lt;h2 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h2&gt;&lt;p&gt;事情的缘由：&lt;a href=&quot;https://www.v2ex.com/t/275010#reply63&quot; target=&quot;
       
     
     </summary>
