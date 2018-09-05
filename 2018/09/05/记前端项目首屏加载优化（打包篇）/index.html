@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>记前端项目首屏加载优化(打包篇) | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="javascript,前端,webpack">
+    <meta name="description" content="记前端项目首屏加载优化（打包篇） 看了一下我司官网的webpack打包出来的大小情况，发现有很多可以优化的点，比如 lodash、moment.js、antd等等；本文主要围绕webpack的打包优化，并根据业务情况适当的做减法。  优化前分析优化前一定要有一个界面能记录目前的打包情况，推荐用webpack-bundle-analyzer这个包, 它可以看到打包后每个模块的大小，还能给出gizp压">
+<meta name="keywords" content="javascript,前端,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记前端项目首屏加载优化(打包篇)">
+<meta property="og:url" content="http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="记前端项目首屏加载优化（打包篇） 看了一下我司官网的webpack打包出来的大小情况，发现有很多可以优化的点，比如 lodash、moment.js、antd等等；本文主要围绕webpack的打包优化，并根据业务情况适当的做减法。  优化前分析优化前一定要有一个界面能记录目前的打包情况，推荐用webpack-bundle-analyzer这个包, 它可以看到打包后每个模块的大小，还能给出gizp压">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/J8Dnh5Z.jpg">
+<meta property="og:image" content="https://i.imgur.com/CBFPJd1.jpg">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/05/ips7jO.png">
+<meta property="og:image" content="https://i.imgur.com/bhJP0F5.jpg">
+<meta property="og:updated_time" content="2018-09-05T06:19:33.276Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记前端项目首屏加载优化(打包篇)">
+<meta name="twitter:description" content="记前端项目首屏加载优化（打包篇） 看了一下我司官网的webpack打包出来的大小情况，发现有很多可以优化的点，比如 lodash、moment.js、antd等等；本文主要围绕webpack的打包优化，并根据业务情况适当的做减法。  优化前分析优化前一定要有一个界面能记录目前的打包情况，推荐用webpack-bundle-analyzer这个包, 它可以看到打包后每个模块的大小，还能给出gizp压">
+<meta name="twitter:image" content="https://i.imgur.com/J8Dnh5Z.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">记前端项目首屏加载优化(打包篇)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">记前端项目首屏加载优化(打包篇)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-05T02:27:05.000Z" itemprop="datePublished" class="page-time">
+  2018-09-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#记前端项目首屏加载优化（打包篇）"><span class="post-toc-number">1.</span> <span class="post-toc-text">记前端项目首屏加载优化（打包篇）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#优化前分析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">优化前分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逐个击破"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">逐个击破</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析antd"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">分析antd</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化lodash"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">优化lodash</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#优化moment"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">优化moment</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#首屏加载视觉优化"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">首屏加载视觉优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-记前端项目首屏加载优化（打包篇）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">记前端项目首屏加载优化(打包篇)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-05 02:27:05" datetime="2018-09-05T02:27:05.000Z"  itemprop="datePublished">2018-09-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="记前端项目首屏加载优化（打包篇）"><a href="#记前端项目首屏加载优化（打包篇）" class="headerlink" title="记前端项目首屏加载优化（打包篇）"></a>记前端项目首屏加载优化（打包篇）</h1><blockquote>
+<p>看了一下我司官网的webpack打包出来的大小情况，发现有很多可以优化的点，比如 lodash、moment.js、antd等等；<br>本文主要围绕webpack的打包优化，并根据业务情况适当的做减法。</p>
+</blockquote>
+<h2 id="优化前分析"><a href="#优化前分析" class="headerlink" title="优化前分析"></a>优化前分析</h2><p>优化前一定要有一个界面能记录目前的打包情况，推荐用<a href="https://www.npmjs.com/package/webpack-bundle-analyzer" target="_blank" rel="noopener">webpack-bundle-analyzer</a>这个包, 它可以看到打包后每个模块的大小，还能给出gizp压缩后的大小，在生产环境中加载的模块都是经过gzip压缩过的，可以作为真实访问的大小依据。<br>安装也很简单：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// cli</span><br><span class="line">npm install --save-dev webpack-bundle-analyzer</span><br><span class="line"></span><br><span class="line">// webpack.config.js</span><br><span class="line">const BundleAnalyzerPlugin = require(&apos;webpack-bundle-analyzer&apos;).BundleAnalyzerPlugin;</span><br><span class="line"> </span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    new BundleAnalyzerPlugin()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注意生产环境(production)是代表线上真实的环境，所以analyzer要对生产环境的包进行分析的，所以我配置了一下本地打包生产环境的构建配置，在package.json加入下面的配置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    ...</span><br><span class="line">    &quot;local_production&quot;: &quot;cross-env NODE_ENV=local_production npm run build&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在webpack配置里面判断<code>process.env.NODE_ENV === &#39;local_production&#39;</code>，构建production环境的构建并且加入analyzer分析生产环境打包出来的情况。</p>
+<p>这里是我的项目用analyzer生成出来的包大小情况（打包前）<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/J8Dnh5Z.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>主要看index.xxxx.js，它包含了所有的公共依赖，我们要做的就是减少不必要的公共资源的体积，可以减少大量不必要的代码。</p>
+<h2 id="逐个击破"><a href="#逐个击破" class="headerlink" title="逐个击破"></a>逐个击破</h2><h3 id="分析antd"><a href="#分析antd" class="headerlink" title="分析antd"></a>分析antd</h3><p>从上面的可以看出来antd.less占了很大部分面积，因为我要在项目中自定义theme，但是官方的那套配置的形式来自定义theme只能修改变量，不能改组件，所以我先加载所有的antd.less再在后面接着加载一个theme.less用于修改主题变量和修改antd组件样式。</p>
+<ul>
+<li>可能是我当时搭项目的时候想太多了，由于是官网项目，所有的组件都是根据ui来自己写的，很少用到antd的组件，项目开发了几十个页面了也没有用到这种自定义组件的情况，所以其实可以不加载这个庞大的antd.less，然后<a href="https://ant.design/docs/react/getting-started-cn#%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD" target="_blank" rel="noopener">antd按需加载</a>是必须的。</li>
+<li>后来发现我项目中用到的antd组件只有两个（轮播和单选框），其实轮播是可以用<a href="https://github.com/akiran/react-slick" target="_blank" rel="noopener">react-slick</a>替代的，而单选框更是可以自己实现的，所以大胆的直接把antd给移除掉了，用其他插件替代即可。</li>
+</ul>
+<p>移除了antd之后index包小了三百多k，这还远远不够，接着看下面的优化点</p>
+<h3 id="优化lodash"><a href="#优化lodash" class="headerlink" title="优化lodash"></a>优化lodash</h3><p>lodash也是需要优化按需加载的方式的，推荐这篇教程<a href="https://imys.net/20161217/webpack-use-lodash.html" target="_blank" rel="noopener">Webpack按需打包Lodash的几种方式</a>, 按照教程改进后，lodash 小了500多k。</p>
+<h3 id="优化moment"><a href="#优化moment" class="headerlink" title="优化moment"></a>优化moment</h3><p>其实moment引进来的时候会带有很多语言包的，我们只用到了其中一个中文的包，所以其他语言包都可以去掉，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>后来又发现项目中只用到了moment().format()这个方法，由于moment.js只有一个大的moment.js模块，没有按模块分开写，无法按需打包，那么其实我们可以自己实现个简易版的moment来替代moment.js，下面是我找到的实现简易版moment代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">// 简易版moment代替moment.js</span><br><span class="line">class Moment &#123;</span><br><span class="line">  private date:Date;</span><br><span class="line">  constructor(arg = new Date().getTime()) &#123;</span><br><span class="line">    this.date = new Date(arg);</span><br><span class="line">  &#125;</span><br><span class="line">  padStart(num) &#123;</span><br><span class="line">    num = String(num);</span><br><span class="line">    if (num.length &lt; 2) &#123;</span><br><span class="line">      return &apos;0&apos; + num;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return num;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  unix() &#123;</span><br><span class="line">    return Math.round(this.date.getTime() / 1000);</span><br><span class="line">  &#125;</span><br><span class="line">  static unix(timestamp) &#123;</span><br><span class="line">    return new Moment(timestamp * 1000);</span><br><span class="line">  &#125;</span><br><span class="line">  format(formatStr) &#123;</span><br><span class="line">      const date = this.date;</span><br><span class="line">      const year = date.getFullYear();</span><br><span class="line">      const month = date.getMonth() + 1;</span><br><span class="line">      const day = date.getDate();</span><br><span class="line">      const week = date.getDay();</span><br><span class="line">      const hour = date.getHours();</span><br><span class="line">      const minute = date.getMinutes();</span><br><span class="line">      const second = date.getSeconds();</span><br><span class="line">      const weeks = [&apos;一&apos;, &apos;二&apos;, &apos;三&apos;, &apos;四&apos;, &apos;五&apos;, &apos;六&apos;, &apos;日&apos;];</span><br><span class="line"></span><br><span class="line">      return formatStr.replace(/Y&#123;2,4&#125;|M&#123;1,2&#125;|D&#123;1,2&#125;|d&#123;1,4&#125;|h&#123;1,2&#125;|m&#123;1,2&#125;|s&#123;1,2&#125;/g, (match) =&gt; &#123;</span><br><span class="line">          switch (match) &#123;</span><br><span class="line">          case &apos;YY&apos;:</span><br><span class="line">              return String(year).slice(-2);</span><br><span class="line">          case &apos;YYY&apos;:</span><br><span class="line">          case &apos;YYYY&apos;:</span><br><span class="line">              return String(year);</span><br><span class="line">          case &apos;M&apos;:</span><br><span class="line">              return String(month);</span><br><span class="line">          case &apos;MM&apos;:</span><br><span class="line">              return this.padStart(month);</span><br><span class="line">          case &apos;D&apos;:</span><br><span class="line">              return String(day);</span><br><span class="line">          case &apos;DD&apos;:</span><br><span class="line">              return this.padStart(day);</span><br><span class="line">          case &apos;d&apos;:</span><br><span class="line">              return String(week);</span><br><span class="line">          case &apos;dd&apos;:</span><br><span class="line">              return weeks[week];</span><br><span class="line">          case &apos;ddd&apos;:</span><br><span class="line">              return &apos;周&apos; + weeks[week];</span><br><span class="line">          case &apos;dddd&apos;:</span><br><span class="line">              return &apos;星期&apos; + weeks[week];</span><br><span class="line">          case &apos;h&apos;:</span><br><span class="line">              return String(hour);</span><br><span class="line">          case &apos;hh&apos;:</span><br><span class="line">              return this.padStart(hour);</span><br><span class="line">          case &apos;m&apos;:</span><br><span class="line">              return String(minute);</span><br><span class="line">          case &apos;mm&apos;:</span><br><span class="line">              return this.padStart(minute);</span><br><span class="line">          case &apos;s&apos;:</span><br><span class="line">              return String(second);</span><br><span class="line">          case &apos;ss&apos;:</span><br><span class="line">              return this.padStart(second);</span><br><span class="line">          default:</span><br><span class="line">              return match;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export const moment = (arg) =&gt; &#123;</span><br><span class="line">  return new Moment(arg);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这样就直接可以把moment.js 干掉了，包体积又小了不少。</p>
+<p>下面是优化后的analyzer生成出来的包大小情况<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/CBFPJd1.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>包体从2.7M优化到了1.7M，gzip从297k减小到212k，访问虽然只是快了一点点，但在低网速环境下访问还是看得到区别的。</p>
+<h3 id="首屏加载视觉优化"><a href="#首屏加载视觉优化" class="headerlink" title="首屏加载视觉优化"></a>首屏加载视觉优化</h3><p>接下来讲一个跟包大小无关又很重要的优化点，就是单页应用的第一个入口html，正常情况下入口html只是用来加载js包，等js加载完之后才渲染出相关界面出来，这个入口html本身没有内容展示，但它是整个网站的第一个请求，取到这个入口html之后才开始加载js，等到加载完js才开始渲染界面，这段时间是占网站整体加载时间最多的，如下图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s1.ax1x.com/2018/09/05/ips7jO.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure><br>第一个请求只要128ms，直到加载完公共js渲染出界面需要1s左右，这时候如果入口index没内容的话那就是纯粹的白屏时间了，所以我们应该好好利用这个入口index.html，可以做一个骨架屏或者loading动画，能让用户在等白屏时间里能够有个界面能看到，停留时间会更长一些，也能让用户以为这个网站一下就刷出来看到东西的感觉。</p>
+<p>对于这个入口index的利用，我是加入了顶部导航栏进去的，让用户可以第一眼看到导航栏知道有什么导航项，而且也是可以点进去的，而内容区对于不同的路径访问会有不同的界面，所以我就简单的弄个loading即可。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://i.imgur.com/bhJP0F5.jpg" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>至此，这一版优化减少了加载的时间，同时合理利用了入口index作为loading页，提高用户体验。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>前端优化工作是一个长期且复杂的工作，有很多可以考虑的地方，可以根据网络环境、框架、用户群体、业务情况、代码结构等多个方面合理地安排选择优化方案，本文只是我对于现有公司官网的优化的一部分，在这里分享给大家，如果觉得有用就点个赞吧👍</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-05T06:19:33.276Z" itemprop="dateUpdated">2018-09-05 06:19:33</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/09/05/记前端项目首屏加载优化（打包篇）/" target="_blank" rel="external">http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&title=《记前端项目首屏加载优化(打包篇)》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&title=《记前端项目首屏加载优化(打包篇)》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记前端项目首屏加载优化(打包篇)》 — lipten主页&url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/28/记第一次在程序中埋了彩蛋/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">记第一次在程序中埋彩蛋🎁</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&title=《记前端项目首屏加载优化(打包篇)》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&title=《记前端项目首屏加载优化(打包篇)》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《记前端项目首屏加载优化(打包篇)》 — lipten主页&url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/09/05/记前端项目首屏加载优化（打包篇）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3a0W7kMAgF0Pn/n9597arNzAVMGq1OnqrWiXxcySDg9YqfP1+er7/J/3q18vua7yuv3jr24OHh4Q22fvW594DkO1dfq34nX4OHh4e3zbu6Ud+vycNAFfP+IJI94+Hh4T2NN8/fe8EGDw8P7//g5WFjHmbw8PDwnsNLUtukFJuXDHrJ92KtBQ8PDy/m5envc35e6e/h4eHhjbvqefn1bFtrEmb+eQsPDw9vgZdfuEnamm+3mv7m6/Hw8PDu5yVFh2TrSUOr95uEioeHh7fHq6bF1VDRa7NNkuxXfpZ4eHh4A15yuSdpdDUkTFpZ0egAHh4e3gJvEgwSxuhaH4xt4eHh4e3xqtd0devVIJEHkiio4OHh4S3zkjQ62XS1gJsUantfw8PDw9vgVYelqk2yalpcbYxFiT4eHh7eUd4kMFSLEfM11bCBh4eHt8frtabmo1Fnq9GXgQEPDw9vgdcroU7CSS+0lNN6PDw8vDVektpWx6eqo1H5+FchtODh4eGt8aojUHlSm6fp8wGCH9bj4eHhrfHmo1fVZLqaslcTazw8PLx7eHli3VszaYnlyTQeHh7eNq961fYKu9VRgGqa/uFw8fDw8I7y8tJDktROyg3VYu6oGIGHh4c34OUFiFMjU/nwVu/I8PDw8O7hbYxYnR0jyMsQzR4aHh4e3oDXKx9MRgHykkfeBsPDw8O7h1d+bVCcjS70Uw8eHh7eAqw6UFUtT+SBpFqS+HBkeHh4eAu8U3fsZHO9dBkPDw/vd3nzrW8cUD5M8GGHeHh4eGu8vEjRizZ5uXax1oKHh4f3AF5vgCBvd+Vh4MPoAB4eHt4DeDk4GQU41b3Cw8PDu5OXj1UlV3M1OW5uPflX4eHh4S3weq9Vr/58gGAyoHCsYIGHh4f38xf+AudAu2B7CUHeAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
