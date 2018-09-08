@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?383b34c6a10206eff577c743dfb783bc"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>单页应用SPA做SEO的一种清奇的方案 | lipten主页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#4d4d4c">
+    
+    
+    <meta name="keywords" content="web前端,seo,node.js">
+    <meta name="description" content="网上有好几种单页应用转seo的方案，有服务端渲染ssr、有预渲染prerender、google抓AJAX、静态化。。。这些方案都各有优劣，开发者可以根据不同的业务场景和环境决定用哪一种方案。本文将介绍另一种思路比较清奇的SEO方案，这个方案也是有优有劣，就看读者觉得适不适合了。  项目分析我的项目是用react+ts+dva技术栈搭建的单页应用，目前在线上已经有几十个页面，若干个sdk和插件在">
+<meta name="keywords" content="web前端,seo,node.js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单页应用SPA做SEO的一种清奇的方案">
+<meta property="og:url" content="http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/index.html">
+<meta property="og:site_name" content="lipten主页">
+<meta property="og:description" content="网上有好几种单页应用转seo的方案，有服务端渲染ssr、有预渲染prerender、google抓AJAX、静态化。。。这些方案都各有优劣，开发者可以根据不同的业务场景和环境决定用哪一种方案。本文将介绍另一种思路比较清奇的SEO方案，这个方案也是有优有劣，就看读者觉得适不适合了。  项目分析我的项目是用react+ts+dva技术栈搭建的单页应用，目前在线上已经有几十个页面，若干个sdk和插件在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/08/iPsbwD.png">
+<meta property="og:updated_time" content="2018-09-08T08:57:08.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单页应用SPA做SEO的一种清奇的方案">
+<meta name="twitter:description" content="网上有好几种单页应用转seo的方案，有服务端渲染ssr、有预渲染prerender、google抓AJAX、静态化。。。这些方案都各有优劣，开发者可以根据不同的业务场景和环境决定用哪一种方案。本文将介绍另一种思路比较清奇的SEO方案，这个方案也是有优有劣，就看读者觉得适不适合了。  项目分析我的项目是用react+ts+dva技术栈搭建的单页应用，目前在线上已经有几十个页面，若干个sdk和插件在">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/09/08/iPsbwD.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="lipten主页" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">lipten</h5>
+          <a href="mailto:lipten@foxmail.com" title="lipten@foxmail.com" class="mail">lipten@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/lipten" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">单页应用SPA做SEO的一种清奇的方案</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">单页应用SPA做SEO的一种清奇的方案</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-08T06:46:24.000Z" itemprop="datePublished" class="page-time">
+  2018-09-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">项目分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#隆重介绍"><span class="post-toc-number">2.</span> <span class="post-toc-text">隆重介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#测试"><span class="post-toc-number">4.</span> <span class="post-toc-text">测试</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-单页应用SPA做SEO的一种清奇的方案"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">单页应用SPA做SEO的一种清奇的方案</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-08 06:46:24" datetime="2018-09-08T06:46:24.000Z"  itemprop="datePublished">2018-09-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>网上有好几种单页应用转seo的方案，有服务端渲染ssr、有预渲染prerender、google抓AJAX、静态化。。。这些方案都各有优劣，开发者可以根据不同的业务场景和环境决定用哪一种方案。本文将介绍另一种思路比较清奇的SEO方案，这个方案也是有优有劣，就看读者觉得适不适合了。</p>
+</blockquote>
+<h3 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h3><p>我的项目是用react+ts+dva技术栈搭建的单页应用，目前在线上已经有几十个页面，若干个sdk和插件在里面。</p>
+<ul>
+<li>考虑想用服务端渲染来做seo，但是我的项目已经开发了这么多，打包配置、代码分割、语法兼容、摒弃浏览器对象，服务端思想，这么多的点需要考虑，还不如换个框架重新开发呢，所以改造成本太大😱，服务端渲染不适合我这种情况。</li>
+<li>预渲染虽然是开发成本最低的，但毕竟是生成一张一张的静态html，而我的seo需求是能够让蜘蛛抓取到我的社区论坛下的每一篇帖子，这样子下来一篇帖子就是一份html,再加上分页，那得多大的量级来存储啊😰，而且网站更新就更麻烦了，这个方案也不太适合。</li>
+<li>google…..Emmmm…………………….下一个</li>
+<li>静态化也是跟预渲染差不多。。。</li>
+</ul>
+<h3 id="隆重介绍"><a href="#隆重介绍" class="headerlink" title="隆重介绍"></a>隆重介绍</h3><p>以前写过一种单页应用seo的方案，就是自己先在本地用爬虫做预渲染，生成同样目录结构的静态化的html，前端项目服务器判断请求的UA是搜索引擎蜘蛛的话就会转发到我事先静态化过的html页面</p>
+<p>当时的项目只是一个简单的只有几个页面的企业官网，预渲染没啥问题。</p>
+<p>跟着这个思路，只要判断搜索引擎蜘蛛让蜘蛛看到另一个有数据的页面不就行了。</p>
+<p>至于页面长什么样，蜘蛛🕷才不会管呢，就像是你找广告商投放广告，广告商不会要求你要怎样的主题什么色调，只要你按照他的尺寸和要求来做，然后给钱给货就完事了🤑。</p>
+<p>所以可以针对SEO做另一套网站，没有样式，只有符合seo规范的html标签和对应的数据，不需要在原有项目上改造，开发成本也不会很高，体积小加载速度更快。</p>
+<p>缺点也有，就是需要另外维护一套网站，主网站界面变化不会影响，如果展示数据有变化就需要同步修改seo版的网站。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>先建个单独的seo文件夹，不需要动到原有项目，下面是代码结构：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://s1.ax1x.com/2018/09/08/iPsbwD.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p>代码实现非常之简单，只要写一个中间件拦截请求，鉴别蜘蛛，返回对应路径的seo页面即可。</p>
+<p>我的前端服务器是用express，可以写个express的中间件, 新建server.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// seo/server.js</span><br><span class="line">const routes = require(&apos;./routes&apos;)</span><br><span class="line">const layout_render = require(&apos;./src/layout&apos;);</span><br><span class="line"></span><br><span class="line">module.exports = (req, res, next) =&gt; &#123;</span><br><span class="line">  // 各大搜索引擎蜘蛛UA</span><br><span class="line">  const spiderUA = /Baiduspider|bingbot|Googlebot|360spider|Sogou|Yahoo! Slurp/</span><br><span class="line">  var isSpider = spiderUA.test(req.get(&apos;user-agent&apos;))</span><br><span class="line">  // 获取路由表的路径</span><br><span class="line">  var seoPath = Object.keys(routes)</span><br><span class="line">  if (isSpider) &#123;</span><br><span class="line">    for (let i=0,route; route = seoPath[i]; i++) &#123;</span><br><span class="line">      if (new RegExp(route).test(req.path)) &#123;</span><br><span class="line">        routes[route](req).then((result) =&gt; &#123;</span><br><span class="line">          // 返回对应的模板结果给蜘蛛</span><br><span class="line">          res.set(&#123;&apos;Content-Type&apos;: &apos;text/html&apos;,&apos;charset&apos;: &apos;utf-8mb4&apos;&#125;).status(200).send(layout_render(result))</span><br><span class="line">        &#125;)</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    // 未匹配到蜘蛛则继续后面的中间件</span><br><span class="line">    return next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在前端的启动服务器里加入这个中间件，记得要放在其他中间件之前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 前端启动服务器的server文件</span></span><br><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"><span class="keyword">var</span> app = express()</span><br><span class="line"><span class="comment">// seo</span></span><br><span class="line">app.use(<span class="built_in">require</span>(<span class="string">'seo/server'</span>));</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">app.listen(xxxx)</span><br></pre></td></tr></table></figure>
+<p>接下来就是写模板和对应的解析了, 新建一个home文件夹，文件夹下再建一个index.ejs和index.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- seo/src/home/index.ejs --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;官网首页&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;友情链接：&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;a href=&quot;https://www.baidu.com/&quot; target=&quot;_blank&quot;&gt;百度&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;&lt;a href=&quot;https://www.gogole.com/&quot; target=&quot;_blank&quot;&gt;谷歌&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>index.js用于解析对应的ejs模板<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// seo/src/home/index.js</span></span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> template = fs.readFileSync(path.resolve(__dirname, <span class="string">'./index.ejs'</span>), <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里为什么会有个async关键字，往后面看就可以知道。</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> result = ejs.render(template)</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们还可以建多个layout模板来管理head、title和导航栏这些公有的元素</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- seo/layout.ejs --&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html;charset=utf-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">”renderer”</span> <span class="attr">content</span>=<span class="string">”webkit”</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"网站关键字"</span>" <span class="attr">name</span>=<span class="string">"keywords"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"网站描述"</span> <span class="attr">name</span>=<span class="string">"description"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>网站标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"root"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/community"</span>&gt;</span>社区<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%-</span> <span class="attr">children</span> <span class="attr">-</span>%&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>解析layout.ejs，套入内容的layout_render:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// seo/layout.js</span></span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> template = fs.readFileSync(path.resolve(__dirname, <span class="string">'./layout.ejs'</span>), <span class="string">'utf8'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> layout_render = <span class="function">(<span class="params">children</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> ejs.render(template, &#123;<span class="attr">children</span>: children&#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = layout_render</span><br></pre></td></tr></table></figure></p>
+<p>路由表用简单的键值对就可以了，键名用字符串形式的正则来表示路径的匹配规则：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// seo/routes.js</span></span><br><span class="line"><span class="keyword">const</span> home_route = <span class="built_in">require</span>(<span class="string">'./src/home/index'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="string">'^(/?)$'</span>: home_route,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么数据如何做请求并展示到对应的模板内呢？数据请求是异步的，怎样等到请求完成再渲染模板呢？</p>
+<p>我们可以用async/await来实现，现在来做一个社区的帖子列表页面，需要先请求社区下帖子列表数据再把数据渲染到模板，新建一个community文件夹，同样再建一个index.ejs作为帖子列表页面模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- seo/src/community/index.ejs --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;帖子列表&lt;/h1&gt;</span><br><span class="line">  &lt;ul&gt;</span><br><span class="line">    &lt;% forum_list.map((item) =&gt; &#123; %&gt;</span><br><span class="line">    &lt;li&gt;&lt;a href=&quot;/community/&lt;%= item.id%&gt;&quot; target=&quot;_blank&quot;&gt;&lt;%= item.title-%&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    &lt;% &#125;)%&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>相关的接口请求及数据操作写在同级的index.js：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// seo/src/community/index.js</span></span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> template = fs.readFileSync(path.resolve(__dirname, <span class="string">'./index.ejs'</span>), <span class="string">'utf8'</span>);</span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">'http://xxx.xx/api/community/list'</span>)</span><br><span class="line">  <span class="keyword">const</span> result = ejs.render(template, &#123;<span class="attr">forum_list</span>: res.data.list&#125;)</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就实现了先取接口数据再做渲染，保证了蜘蛛访问能给到完整的数据和html结构。</p>
+<p>继续实现一个帖子详情的页面：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- seo/src/community_detail/index.ejs --&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;h1&gt;&lt;%= forum_data.title%&gt;&lt;/h1&gt;</span><br><span class="line">  &lt;p&gt;&lt;%= forum_data.content%&gt;&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;作者：&lt;%= forum_data.user.nickname%&gt;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// seo/src/community_detail/index.js</span></span><br><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">'ejs'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> template = fs.readFileSync(path.resolve(__dirname, <span class="string">'./index.ejs'</span>), <span class="string">'utf8'</span>);</span><br><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="keyword">async</span> (req) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> forum_id = req.path.split(<span class="string">'/'</span>)[<span class="number">2</span>]</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> axios.get(<span class="string">`http://xxx.xx/api/community/<span class="subst">$&#123;forum_id&#125;</span>/details?offset=1&amp;limit=10`</span>)</span><br><span class="line">  <span class="keyword">const</span> result = ejs.render(template, &#123;<span class="attr">forum_data</span>: res.data&#125;)</span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就实现了一个简单的seo版网站，不需要任何样式，不需要js做弹框之类的后续交互，只要蜘蛛访问网址的第一个请求有它要的数据即可，是不是非常的清奇😝。。。</p>
+<p>总结来说呢，就是如果你的项目处在线上运营阶段并且开发到了一定的集成度了，迫于ssr的改造成本太大，又需要让一些数据(比如每一篇文章帖子)能够被收录，就可以考虑一下我的这个方法🤓。</p>
+<p>但是我不保证蜘蛛的防作弊机制，会不会过滤掉我这种跟浏览器正常访问主站差异较大的seo版小网站🤔。目前这个方案还在试验阶段。</p>
+<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>测试也很简单，写个模拟蜘蛛请求即可，curl、爬虫、postman都可以模拟蜘蛛的UA来测试。或者改一下搜索引擎蜘蛛的的判断条件就可以直接用浏览器访问的呢。</p>
+<hr>
+<p>如果有朋友用了我这个方法并且真的有用能够被搜索引擎收录的话，请记得我😎，要是能打赏就更好了哈哈🤑。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-09-08T08:57:08.174Z" itemprop="dateUpdated">2018-09-08 08:57:08</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/09/08/单页应用SPA做SEO的一种清奇的方案/" target="_blank" rel="external">http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lipten.github.io">
+            <img src="https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" alt="lipten">
+            lipten
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/seo/">seo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web前端/">web前端</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&title=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&title=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/05/记前端项目首屏加载优化（打包篇）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">记前端项目首屏加载优化(打包篇)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢老板
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>lipten &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&title=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&pic=https://avatars2.githubusercontent.com/u/8328548?s=400&u=24d91896d5ddb690e91740a08fc834d759f498be&v=4" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&title=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《单页应用SPA做SEO的一种清奇的方案》 — lipten主页&url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/&via=http://lipten.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lipten.github.io/2018/09/08/单页应用SPA做SEO的一种清奇的方案/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aUW7bMBAE0Nz/0ukBHMkzu6LhAk9fQeOSfApArmf58xM/vy/P62+TEa5+vh/z6jOPPXh4eHjrpb8Odz/B/Sevln4Py9dzPxoeHh7eOd5mK08wyb59P9f9LJf/joeHh/c1vLyOPXGE4OHh4f2PvHxZ0SLK14qHh4f3Dbzky38e1LaB7JtAISi1H8ha8PDw8GJe3kX6np+P9Pfw8PDw1l31fLPetKzaqKJYLR4eHt4B3iyWTcru5PLBrFVWx8d4eHh4h3ltIDuLaNsZZ68SDw8P7zO89mt/XjTPLmm1h030vvHw8PAWvPxiaNu2z19ZG1gUfxg8PDy8A7y2/d8eA20sO2MURT8eHh7emrff7u+j3k1c2zbJLvt7eHh4eAd4eVO/peZx8Gz2NwEHHh4e3gFe+9G8gJ61ymZjvinN8fDw8I7xZq2pNnjNY4j8QmoR3eLh4eGtefkX/s3ryIvv2SWGSzAeHh7eAV5b4D7bPGuvDqxWiIeHh3eAl2/uSSnchgtt6ZwcaXh4eHgneHmUkG/TswgjL5eLQwgPDw/vAG8W0bbLahe3KceLrBoPDw9vwduXsJuoN48hhte28PDw8A7wZk2pNtidRbSbOAMPDw/vBK8domg1jY6NPLBIjhA8PDy8E7xZmVs37Edjzi4r4OHh4X2S1x4GeXgxu3TVHjlRjIuHh4f3KC+ZbJN27HnDKwh4eHh4x3iby1J5WDDMlcsyHQ8PD+8c77d82mOgvSy1mfGPPwweHh7eAd5+850V0G2QkbTN2jgDDw8Pb8NrG13tBt1u/fv/u+rj4eHh4cW8PN5trwVsxnzgwcPDw/syXtswm8UcyTFw5GDAw8PDe5TXTtwucRMx4+Hh4X2Gl4QReTxRbNyLsLi+GYGHh4f3EG/2jT6fchPLthe8Hgss8PDw8P4e4R8HFzXKqxMqQAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
